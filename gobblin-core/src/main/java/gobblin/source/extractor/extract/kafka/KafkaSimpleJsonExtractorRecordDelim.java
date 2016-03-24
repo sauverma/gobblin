@@ -32,7 +32,7 @@ public class KafkaSimpleJsonExtractorRecordDelim extends KafkaExtractor<String, 
 	private static final Map<String, String> delimMap = new ConcurrentHashMap<String, String>();
 	private static final String ROWDELIMTER = "kafka.output.record.delimiter";
 	private static final String DEFAULT_RECORD_DELIM = "NEWLINE";
-	private static String allowedDelimiters = null;
+	private static String allowedDelimiters = "";
 	private String recordDelimiter = null;
 
 	static {
