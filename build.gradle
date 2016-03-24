@@ -44,13 +44,16 @@ apply from: environmentScript
 
 allprojects {
   apply from: rootProject.projectDir.path + '/gradle/scripts/hadoop-version.gradle'
+  repositories {
+        mavenCentral()
+  }
 }
 
 ext.publishToMaven = project.hasProperty('publishToMaven')
 if (ext.publishToMaven) {
     plugins.apply('maven')
     // Workaround for a bug in gradle's "maven" plugin. See https://discuss.gradle.org/t/error-in-parallel-build/7215/3
-    project.setProperty("org.gradle.parallel", "false")
+    project.ext.setProperty("org.gradle.parallel", "false")
 }
 
 ext.signArtifacts = !project.hasProperty('doNotSignArtifacts')

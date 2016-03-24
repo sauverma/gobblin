@@ -12,17 +12,17 @@
 
 package gobblin.source.extractor.extract.kafka;
 
+import java.io.IOException;
+
 import gobblin.configuration.WorkUnitState;
 import gobblin.source.extractor.Extractor;
-
-import java.io.IOException;
 
 /**
  * A {@link KafkaSource} implementation for SimpleKafkaExtractor.
  *
  * @author saurabh.verma@zeotap.com
  */
-public class KafkaSimpleSource extends KafkaSource<String, byte[]> {
+public class KafkaSimpleJsonSourceRecordDelim extends KafkaSource<String, byte[]> {
   /**
    * Get an {@link Extractor} based on a given {@link WorkUnitState}.
    * <p>
@@ -34,6 +34,7 @@ public class KafkaSimpleSource extends KafkaSource<String, byte[]> {
    * @return an {@link Extractor} used to extract schema and data records from the data source
    * @throws IOException if it fails to create an {@link Extractor}
    */
+	
   @Override
   public Extractor<String, byte[]> getExtractor(WorkUnitState state) throws IOException {
     return new KafkaSimpleJsonExtractorRecordDelim(state);
