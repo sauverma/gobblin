@@ -46,9 +46,6 @@ public class KafkaSimpleJsonExtractorRecordDelim extends KafkaExtractor<String, 
 
 	public KafkaSimpleJsonExtractorRecordDelim(WorkUnitState state) throws IllegalArgumentException {
 		super(state);
-		System.out.println("########Instantiating KafkaSimpleExtractorRowDelim with delim : "
-				+ state.getProp(ROWDELIMTER, DEFAULT_RECORD_DELIM));
-
 		String inpDelim = delimMap.get(state.getProp(ROWDELIMTER, DEFAULT_RECORD_DELIM));
 		if (inpDelim == null) {
 			throw new IllegalArgumentException(
@@ -66,8 +63,6 @@ public class KafkaSimpleJsonExtractorRecordDelim extends KafkaExtractor<String, 
 		delimPayload.put(messageAndOffset.message().payload());
 		delimPayload.put(recordDelimiter.getBytes());
 		delimPayload.flip();
-
-		System.out.println("^^^" + new String(delimPayload.array(), Charset.forName("UTF-8")));
 
 		return getBytes(delimPayload);
 	}
