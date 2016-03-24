@@ -36,6 +36,6 @@ public class KafkaSimpleSource extends KafkaSource<String, byte[]> {
    */
   @Override
   public Extractor<String, byte[]> getExtractor(WorkUnitState state) throws IOException {
-    return new KafkaSimpleJsonExtractorRecordDelim(state);
+    return new KafkaSimpleExtractor(state);
   }
 }
